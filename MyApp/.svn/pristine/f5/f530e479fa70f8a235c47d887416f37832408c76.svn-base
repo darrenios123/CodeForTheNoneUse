@@ -1,0 +1,10 @@
+platform :ios, '9.0'
+#use_frameworks!个别需要用到它，比如reactiveCocoa
+
+target 'MyApp' do
+pod 'MBProgressHUD'
+pod 'AFNetworking','~>2.6.3'
+pod 'SVProgressHUD'
+pod 'SDWebImage'
+
+end
