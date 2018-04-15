@@ -42,7 +42,12 @@
 -(NSMutableArray *)images{
     if (!_images) {
         _images = [NSMutableArray array];
-        NSArray * imageNames = @[@"u1.jpeg",@"u2.jpg",@"u3.jpeg"];
+        NSArray * imageNames = nil;
+        if(ScreenHeight<812){
+            imageNames = @[@"yindaoye1242*2208-1",@"yindaoye1242*2208-2",@"yindaoye1242*2208-3"];
+        }else{
+            imageNames = @[@"yindaoye1125*2436-1",@"yindaoye1125*2436-2",@"yindaoye1125*2436-3"];
+        }
         for (NSString * name in imageNames) {
             [self.images addObject:[UIImage imageNamed:name]];
         }
@@ -57,7 +62,7 @@
         if (i == self.images.count - 1){//最后一张图片时添加点击进入按钮
             imageV.userInteractionEnabled = YES;
             UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.frame = CGRectMake(ScreenWidth * 0.5 - 80, ScreenHeight * 0.7, 160, 40);
+            btn.frame = CGRectMake(ScreenWidth * 0.5 - 80, ScreenHeight * 0.85, 160, 40);
             [btn setTitle:@"跳过" forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             btn.backgroundColor = [UIColor darkGrayColor];

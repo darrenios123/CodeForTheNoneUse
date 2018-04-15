@@ -1,49 +1,76 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+<html class="ios device-pixel-ratio-2 device-retina device-ios device-ios-10 device-ios-10-3 device-ios-gt-9 device-ios-gt-8 device-ios-gt-7 device-ios-gt-6 support-position-sticky"><head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Your app title -->
+    <title>魅力凤凰</title>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.css">
+    <link rel="stylesheet" type="text/css" href="css/framework7-icons.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my-app.css">
+  <script></script></head>
+  <body class="showy">
+    <!-- App root element -->
+    <div id="app" class="framework7-root">
+       <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <!-- panel left 侧边栏开始-->
+    <div class="panel-backdrop" style=""></div><div class="panel panel-left panel-reveal panel-cover" style="">
+      <div class="panel-content block">
+        <div class="panel-corporate">
+          <img alt="" src="img/logo.png">
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
-</html>
+        <div class="panel-line"></div>
+        <div class="list-block accordion-list panel-menu">
+          <ul>
+            <li class="item-title"><a href="#">评论我们</a></li>
+            <li class="item-title"><a href="#">给我们打分</a></li>
+            <li class="item-title"><a href="#">检测更新</a></li>
+            <li class="item-title"><a href="#">意见反馈</a></li>
+            <li class="item-title"><a href="#">关于</a></li>
+          </ul>
+        </div>
+        <div class="panel-line"></div>
+      </div>
+    </div>
+    <!-- 侧边栏结束 -->
+    <!-- views部分开始 -->
+    <div class="views">
+      <div class="view view-main">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left"><i></i>
+              <a href="#" class="link icon-only panel-open more"><i class="f7-icons">menu</i>
+                <!-- 字体图标部分 -->
+              </a>
+            </div>
+            <div class="center">魅力凤凰</div>
+          </div>
+        </div>
+        <div class="pages navbar-through">
+          <div class="page">
+            <!-- Scrollable page content -->
+            <div class="page-content">
+              <ul class="lists">
+                <li><a href="lists1.html"><img src="img/1.jpg" alt=""><span>地理</span></a></li>
+                <li><a href="lists2.html"><img src="img/2.jpg" alt=""><span>历史</span></a></li>
+                <li><a href="lists3.html"><img src="img/3.jpg" alt=""><span>景点</span></a></li>
+                <li><a href="lists4.html"><img src="img/4.jpg" alt=""><span>便民</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  
+
+</body></html>
