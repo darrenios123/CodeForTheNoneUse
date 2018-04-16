@@ -53,6 +53,15 @@
     return self;
 }
 
+-(id)init:(NSString *)wwwf andUrl:(NSString *)url{
+    self = [super init];
+    if (self) {
+        self.wwwFolderName = wwwf;
+        self.startPage = url;
+    }
+    return self;
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.

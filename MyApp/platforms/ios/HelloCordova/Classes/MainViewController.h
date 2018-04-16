@@ -30,7 +30,7 @@
 #import <Cordova/CDVCommandQueue.h>
 
 @interface MainViewController : CDVViewController
-
+-(id)init:(NSString *)wwwf andUrl:(NSString *)url;
 @end
 
 @interface MainCommandDelegate : CDVCommandDelegateImpl
