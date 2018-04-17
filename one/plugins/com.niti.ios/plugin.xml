@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.niti.ios" version="0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<name>MobilePlugin</name>
+    <js-module name="MobilePlugin" src="www/MobilePlugin.js">
+        <clobbers target="cordova.plugins.MobilePlugin" /></js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+        <feature name="MobilePlugin">
+        <param name="ios-package" value="MobilePlugin" /></feature></config-file>
+        <source-file src="src/ios/MobilePlugin.h" />
+        <source-file src="src/ios/MobilePlugin.m" />
+        </platform></plugin>
