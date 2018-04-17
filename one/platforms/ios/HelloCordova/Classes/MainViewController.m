@@ -26,6 +26,8 @@
 //
 
 #import "MainViewController.h"
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+
 
 @implementation MainViewController
     
@@ -78,6 +80,10 @@
         // you can do so here.
         
         [super viewWillAppear:animated];
+        
+        UIView * stview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 20)];
+        stview.backgroundColor = [UIColor colorWithRed:119.0/255.0f green:191.0/255.0f blue:220.0/255.0f alpha:1.0];
+        [self.view addSubview:stview];
     }
     
 - (void)viewDidLoad

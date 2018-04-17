@@ -156,6 +156,16 @@ html.ios-gt-8 .navbar .center {
 .panel-menu .item-title {
   padding-left: 10px;
   width: 100%;
+  /*text-align: center;*/
+}
+.panel-menu .item-title i{
+  font-size: 15pt!important;
+  color:#555;
+  margin-right: 8px;
+}
+.panel-menu .item-title a{
+  color:#555;
+  font-size: 14pt;
 }
 
 .list-block .item-link .item-inner {

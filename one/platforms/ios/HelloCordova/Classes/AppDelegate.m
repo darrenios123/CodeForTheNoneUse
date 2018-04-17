@@ -54,18 +54,28 @@
         //wwwf 为网络协议
         [query includeKey:@"wwwf"];
         NSArray * arrray = [NSArray arrayWithArray:[query findObjects]];
-        NSDictionary * dic = [arrray objectAtIndex:0];
-        if ([[dic objectForKey:@"isReal"] isEqualToString:@"on"]) {
-            NSLog(@"开关on状态");
-            MainViewController * mainVC =  [[MainViewController alloc] init:[dic objectForKey:@"wwwf"] andUrl:[dic objectForKey:@"intoUrl"]];
-            if (![userDefault boolForKey:@"isNotFirst"]) {//如果用户是第一次登录
-                NSLog(@"First blood");
-                self.window.rootViewController = [[GuidePagesViewController alloc]init];
-            }else{//否则直接进入登录页面
-                self.window.rootViewController = mainVC;
+        if(arrray.count>0){
+            NSDictionary * dic = [arrray objectAtIndex:0];
+            if ([[dic objectForKey:@"isReal"] isEqualToString:@"on"]) {
+                NSLog(@"开关on状态");
+                MainViewController * mainVC =  [[MainViewController alloc] init:[dic objectForKey:@"wwwf"] andUrl:[dic objectForKey:@"intoUrl"]];
+                if (![userDefault boolForKey:@"isNotFirst"]) {//如果用户是第一次登录
+                    NSLog(@"First blood");
+                    self.window.rootViewController = [[GuidePagesViewController alloc]init];
+                }else{//否则直接进入登录页面
+                    self.window.rootViewController = mainVC;
+                }
+            }else{
+                NSLog(@"开关off状态");
+                MainViewController * mainVC =  [[MainViewController alloc] init];
+                if (![userDefault boolForKey:@"isNotFirst"]) {//如果用户是第一次登录
+                    self.window.rootViewController = [[GuidePagesViewController alloc]init];
+                }else{//否则直接进入登录页面
+                    self.window.rootViewController = mainVC;
+                }
             }
         }else{
-            NSLog(@"开关off状态");
+            NSLog(@"查询数据失败");
             MainViewController * mainVC =  [[MainViewController alloc] init];
             if (![userDefault boolForKey:@"isNotFirst"]) {//如果用户是第一次登录
                 self.window.rootViewController = [[GuidePagesViewController alloc]init];
@@ -73,6 +83,7 @@
                 self.window.rootViewController = mainVC;
             }
         }
+
         
         
         [self.window makeKeyAndVisible];

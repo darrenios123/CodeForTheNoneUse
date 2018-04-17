@@ -5,9 +5,6 @@
 .ios .navbar:after,.md .navbar:after{
     display: none;
 }
-.navbar .center{
-	margin:0 auto;
-}
 .navbar{
 	height: 44px;
     width: 100%;
@@ -20,13 +17,24 @@
     backface-visibility: hidden;
 }
 .navbar .center{
-	font-family: "Montserrat", sans-serif;
-    -webkit-font-smoothing: antialiased;
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
+    color: #EE3B3B;
+    letter-spacing:3px;
+    font-size:17pt;
+}
+.navbar .left a{
+    width: 30px;
+}
+.vintage3 {
+    color: transparent;
+    background-color :#EE3B3B;
+    text-shadow : rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px;
+    -webkit-background-clip : text;
 }
 .navbar a.icon-only, .subnavbar a.icon-only, .toolbar a.icon-only {
     min-width: 44px;
@@ -38,7 +46,7 @@
     display: block;
 }
 .f7-icons{
-    font-size: 30px!important;
+    font-size: 28px!important;
 }
 /*公共样式结束*/
 /*首页样式*/
@@ -60,8 +68,17 @@
     overflow: hidden;
 }
 .showy ul.lists li a{
+    width: 100%;
     position: relative;
-    display: block;
+    display: inline-block;
+    /*height: 60px;*/
+    overflow: hidden;
+    color: #222;
+    text-decoration: none;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 .showy ul.lists li a img{
     width: 100%;
@@ -69,9 +86,10 @@
 .showy ul.lists li a span{
     position: absolute;
     color:#fff;
-    top: 10%;
-    left: 10%;
+    top: 50%;
+    left: 8%;
     font-size: 16pt;
+    letter-spacing:2px;
 }
 /*lists1部分开始*/
 .ls1 .views .navbar{
@@ -104,13 +122,98 @@
     padding-bottom: 10px;
 }
 .ls1 .page .page-content .sec .wz p.color{
-    color:orange;
+    color:#EE3B3B;
 }
 .ls1 .navbar .icon{
     margin-left:0;
-    color:orange;
+    color:#EE3B3B;
 }
 /*ls4样式*/
 .ls4 section .wz ol li{
     color:#555;
+}
+/*意见反馈css*/
+.yj .page-content{
+    padding-top: 0;
+    background: #f7f7f8;
+    text-align:center;
+}
+.yj .page-content .navbar{
+    background:#f7f7f8;
+}
+.yj .page-content .navbar .center{
+    color:#EE3B3B;
+}
+.yj .page-content h3{
+    font-size: 13pt;
+    line-height: 300%;
+    color:#666;
+}
+.yj .page-content form textarea{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 10%;
+    background: #fff;
+    line-height: 200%;
+    font-size: 13pt;
+}
+.yj .page-content div.blocks{
+    margin-left:17%;
+}
+.yj .page-content div.blocks a{
+    display: block;
+    background:#EE3B3B;
+    width: 80%;
+    height: 60px;
+    line-height: 60px;
+    color:#fff;
+    font-size: 16pt;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+/*关于我们css*/
+.gy .page-content section div.tu{
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    border:1px solid #aaa;
+    margin:50px auto;
+    overflow: hidden;
+    margin-bottom:5px;
+}
+.gy .page-content section div.tu img{
+    width: 100%;
+}
+.gy .page-content section p.fir{
+    color:#000;
+    font-size: 16pt!important;
+}
+.gy .page-content p{
+    margin:0px;
+}
+.gy .page-content section div.hz{
+    background: #fff;
+    text-align: left;
+    text-align: center;
+    padding-top:10px;
+}
+.gy .page-content section div.hz p{
+    color:#000;
+    font-size: 13pt!important;
+}
+.gy .page-content section div.hz i{
+    line-height: 110%;
+    color:#EE3B3B;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.gy .page-content footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left:0;
+}
+.gy .page-content footer p:first-child{
+    color:#EE3B3B;
 }

@@ -29,7 +29,6 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
 //        cordova.plugins.MobilePlugin.appraise("appraise");
-        cordova.plugins.MobilePlugin.checkVersion("checkVersion");
         window.location.href = "sec.html";
     },
 

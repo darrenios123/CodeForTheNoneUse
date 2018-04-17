@@ -55,7 +55,10 @@
     NSString* localPhoneModel = [[UIDevice currentDevice] localizedModel];
     NSLog(@"国际化区域名称: %@",localPhoneModel );
     
-    NSMutableDictionary * deviceDic = [NSMutableDictionary dictionaryWithDictionary:infoDictionary];
+    NSMutableDictionary * deviceDic = [NSMutableDictionary dictionary];
+    [deviceDic setObject:app_Name forKey:@"app_Name"];
+    [deviceDic setObject:app_Version forKey:@"app_Version"];
+    [deviceDic setObject:app_build forKey:@"app_build"];
     [deviceDic setObject:userPhoneName forKey:@"userPhoneName"];
     [deviceDic setObject:deviceName forKey:@"deviceName"];
     [deviceDic setObject:phoneVersion forKey:@"phoneVersion"];
@@ -63,7 +66,7 @@
     [deviceDic setObject:localPhoneModel forKey:@"localPhoneModel"];
     
     
-    CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:deviceDic];
+    CDVPluginResult * result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"恭喜您，已经是最新版本啦！"];
     [self.commandDelegate sendPluginResult:result callbackId:callbackID];
     
 }
