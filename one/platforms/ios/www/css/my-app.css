@@ -23,7 +23,7 @@
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
-    color: #EE3B3B;
+    color: #fdfdfd;
     letter-spacing:3px;
     font-size:17pt;
 }
@@ -32,8 +32,6 @@
 }
 .vintage3 {
     color: transparent;
-    background-color :#EE3B3B;
-    text-shadow : rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px;
     -webkit-background-clip : text;
 }
 .navbar a.icon-only, .subnavbar a.icon-only, .toolbar a.icon-only {
@@ -139,10 +137,10 @@
     text-align:center;
 }
 .yj .page-content .navbar{
-    background:#f7f7f8;
+    background:#EE3B3B;
 }
 .yj .page-content .navbar .center{
-    color:#EE3B3B;
+    color:#fdfdfd;
 }
 .yj .page-content h3{
     font-size: 13pt;

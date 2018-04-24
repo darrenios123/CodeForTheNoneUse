@@ -882,7 +882,7 @@ html.with-statusbar.device-iphone-x .panel {
 .ios .navbar,.md .navbar {
   height: 44px;
   font-size: 17px;
-  background: #f7f7f8;
+  background: #EE3B3B;
 }
 .ios .navbar.no-hairline:after {
   display: none !important;

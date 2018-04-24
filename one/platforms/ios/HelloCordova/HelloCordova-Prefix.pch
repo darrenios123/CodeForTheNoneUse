@@ -23,4 +23,19 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
+    #import <AVOSCloud/AVOSCloud.h>
 #endif
+
+
+#define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
+#define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
+#define IOS8 [[[UIDevice currentDevice] systemVersion]floatValue]>=8
+#define ISIPHONEX ([[UIScreen mainScreen]bounds].size.height>811 )
+
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+#define APPSTOREURL @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APPID&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"
+#define YYLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define NSLog(...) NSLog(__VA_ARGS__)
+
+#define UMAPPKEY @"5adb3f6d8f4a9d4a500000d0"
+

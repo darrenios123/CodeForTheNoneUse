@@ -26,7 +26,6 @@
 //
 
 #import "MainViewController.h"
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
 
 
 @implementation MainViewController
@@ -80,9 +79,10 @@
         // you can do so here.
         
         [super viewWillAppear:animated];
+        self.navigationController.navigationBar.hidden =YES;
         
-        UIView * stview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 20)];
-        stview.backgroundColor = [UIColor colorWithRed:119.0/255.0f green:191.0/255.0f blue:220.0/255.0f alpha:1.0];
+        UIView * stview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+        stview.backgroundColor = RGBCOLOR(238, 59, 59);
         [self.view addSubview:stview];
     }
     
