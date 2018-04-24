@@ -115,6 +115,22 @@
     
     
     
+    navC1.navigationBar.titleTextAttributes =[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,nil];
+    navC2.navigationBar.titleTextAttributes =[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,nil];
+    navC3.navigationBar.titleTextAttributes =[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,nil];
+    navC4.navigationBar.titleTextAttributes =[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,nil];
+    
+    navC1.navigationBar.barTintColor =RGBCOLOR(238, 59, 59);
+    navC2.navigationBar.barTintColor =RGBCOLOR(238, 59, 59);
+    navC3.navigationBar.barTintColor =RGBCOLOR(238, 59, 59);
+    navC4.navigationBar.barTintColor =RGBCOLOR(238, 59, 59);
+    
+    
+    navC1.navigationBar.translucent = NO;
+    navC2.navigationBar.translucent = NO;
+    navC3.navigationBar.translucent = NO;
+    navC4.navigationBar.translucent = NO;
+    
     /**************************************** Key Code ****************************************/
     
     //初始化配置信息

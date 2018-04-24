@@ -80,10 +80,16 @@
         
         [super viewWillAppear:animated];
         self.navigationController.navigationBar.hidden =YES;
-        
-        UIView * stview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
-        stview.backgroundColor = RGBCOLOR(238, 59, 59);
-        [self.view addSubview:stview];
+        if(ISIPHONEX){
+            UIView * stview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+            stview.backgroundColor = RGBCOLOR(238, 59, 59);
+            [self.view addSubview:stview];
+        }else{
+            UIView * stview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+            stview.backgroundColor = RGBCOLOR(238, 59, 59);
+            [self.view addSubview:stview];
+        }
+
     }
     
 - (void)viewDidLoad

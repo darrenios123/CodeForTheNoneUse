@@ -271,7 +271,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     XBSettingSectionModel *sectionModel = self.sectionArray[section];
-    return sectionModel.itemArray.count;}
+    return sectionModel.itemArray.count;
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

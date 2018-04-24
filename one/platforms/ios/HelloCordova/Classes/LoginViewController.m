@@ -26,7 +26,7 @@
 #define kForgetPwdBtnWidth [UIScreen mainScreen].bounds.size.width * 0.2375
 
 // 输入框距离顶部的高度
-#define kTopHeight
+#define kTopHeight 200
 
 
 @interface LoginViewController ()<UIScrollViewDelegate>
