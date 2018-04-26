@@ -50,6 +50,7 @@
     NSBundle* mainBundle = [NSBundle mainBundle];
     NSMutableArray* directoryParts = [NSMutableArray arrayWithArray:[resourcepath componentsSeparatedByString:@"/"]];
     NSString* filename = [directoryParts lastObject];
+    NSString *docpath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask, YES) firstObject];
 
     [directoryParts removeLastObject];
 
@@ -59,8 +60,8 @@
     if ([directoryPartsJoined length] > 0) {
         directoryStr = [NSString stringWithFormat:@"%@/%@", _viewController.wwwFolderName, [directoryParts componentsJoinedByString:@"/"]];
     }
-
-    return [mainBundle pathForResource:filename ofType:@"" inDirectory:directoryStr];
+    
+    return [NSString stringWithFormat:@"%@/%@/%@",docpath,directoryStr,filename];
 }
 
 - (void)flushCommandQueueWithDelayedJs

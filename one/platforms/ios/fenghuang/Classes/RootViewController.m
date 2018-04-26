@@ -1,10 +1,11 @@
 //
-//  GuidePagesViewController ViewController.m
+//  RootViewController.m
 //  fenghuang
 //
-//  Created by Darren on 2018/4/15.
+//  Created by Darren on 2018/4/26.
 //
 
+#import "RootViewController.h"
 #import "MainViewController.h"
 #import "DemoMeController.h"
 #import "GuidePagesViewController.h"
@@ -15,92 +16,80 @@
 #import "JMConfig.h"
 #import "ZipArchive.h"
 
-@interface GuidePagesViewController ()<UIScrollViewDelegate>{
-    UIView * view;
+@interface RootViewController (){
+    UIView *view;
 }
-
-@property(nonatomic ,strong) UIScrollView * mainScrollV;
-@property(nonatomic ,strong) UIPageControl * pageControl;
-@property(nonatomic ,strong) NSMutableArray * images;
+@property (nonatomic, strong) UIView *progressBackView;
+@property (nonatomic, strong) UILabel *progressLabel;
+@property (nonatomic, strong) UIProgressView *progressView;
 
 @end
 
-@implementation GuidePagesViewController
+@implementation RootViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
-    [self.view addSubview:self.mainScrollV];
-    [self.view addSubview:self.pageControl];
+    UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue]<7.0) {
+        [self.view setFrame:CGRectMake(0, -20, SCREEN_WIDTH, SCREEN_HEIGHT-50)];
+    }
+    
+    if (SCREEN_HEIGHT>=812) {
+        backImageView.image=[UIImage imageNamed:@"Launch1125*2436"];
+    }else if (SCREEN_HEIGHT>=736) {
+        backImageView.image=[UIImage imageNamed:@"Launch1242*2208"];
+    }else if (SCREEN_HEIGHT>=667 && SCREEN_HEIGHT<736) {
+        backImageView.image=[UIImage imageNamed:@"Launch750*_1334"];
+    }
+    else if (SCREEN_HEIGHT>480 && SCREEN_HEIGHT<667)
+    {
+        backImageView.image=[UIImage imageNamed:@"Launch640*1136"];
+    }
+    else
+    {
+        backImageView.image=[UIImage imageNamed:@"Launch640*960"];
+    }
+    
+    [self.view addSubview:backImageView];
+    
+    
+    _progressBackView=[[UIView alloc]initWithFrame:CGRectMake(15,(SCREEN_HEIGHT-60)/2+100,SCREEN_WIDTH-30,60)];
+    //背景颜色
+    _progressBackView.backgroundColor=[UIColor clearColor];
+    //_progressBackView.alpha=0.6;
+    
+    _progressLabel=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-60,0,100, 20)];
+    _progressLabel.backgroundColor=[UIColor clearColor];
+    _progressLabel.textColor=[UIColor blackColor];
+    _progressLabel.textAlignment=NSTextAlignmentCenter;
+    _progressLabel.font=[UIFont systemFontOfSize:14.0];
+    _progressLabel.text=@"下载进度0%";
+    [_progressBackView addSubview:_progressLabel];
+    
+    _progressView=[[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleDefault];
+    [_progressView setFrame:CGRectMake(0, 30, SCREEN_WIDTH-30, 20)];
+    [_progressBackView addSubview:_progressView];
+    //[self.view addSubview:_progressBackView];
+    
+    
+    [AVOSCloud setApplicationId:@"oCBAIpfzBvtIT3qq2AslNPUU-gzGzoHsz" clientKey:@"0MbY3orKNzCQBb3CQbeNq5Kd"];
+    
+    NSString * path = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:@"/Caches/First.txt"];
+    BOOL haveFile = NO;
+    
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        haveFile = YES;
+    }
+    
+    if (!haveFile) {
+        [UIApplication sharedApplication].delegate.window.rootViewController = [[GuidePagesViewController alloc]init];
+    }else{
+        [self initWWWFolder];
+    }
     
 }
--(UIScrollView *)mainScrollV{
-    if (!_mainScrollV) {
-        _mainScrollV = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-        _mainScrollV.bounces = NO;
-        _mainScrollV.pagingEnabled = YES;
-        _mainScrollV.showsHorizontalScrollIndicator = NO;
-        _mainScrollV.delegate = self;
-        _mainScrollV.contentSize = CGSizeMake(self.images.count * SCREEN_WIDTH, SCREEN_HEIGHT);
-        [self addSubImageViews];
-    }
-    return _mainScrollV;
-}
--(NSMutableArray *)images{
-    if (!_images) {
-        _images = [NSMutableArray array];
-        NSArray * imageNames = nil;
-        if(!ISIPHONEX){
-            imageNames = @[@"yindaoye1242*2208-1",@"yindaoye1242*2208-2",@"yindaoye1242*2208-3"];
-        }else{
-            imageNames = @[@"yindaoye1125*2436-1",@"yindaoye1125*2436-2",@"yindaoye1125*2436-3"];
-        }
-        for (NSString * name in imageNames) {
-            [self.images addObject:[UIImage imageNamed:name]];
-        }
-    }
-    return _images;
-}
-- (void)addSubImageViews{
-    for (int i = 0; i < self.images.count; i++) {
-        UIImageView * imageV = [[UIImageView alloc]initWithFrame:CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        imageV.image = self.images[i];
-        [_mainScrollV addSubview:imageV];
-        if (i == self.images.count - 1){//最后一张图片时添加点击进入按钮
-            imageV.userInteractionEnabled = YES;
-            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.frame = CGRectMake(SCREEN_WIDTH * 0.5 - 80, SCREEN_HEIGHT * 0.85, 160, 40);
-            [btn setTitle:@"跳过" forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            btn.backgroundColor = [UIColor darkGrayColor];
-            btn.layer.cornerRadius = 20;
-            [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-            [imageV addSubview:btn];
-        }
-    }
-}
-//点击按钮保存第一次登录的标记到本地并且跳入登录界面
-- (void)btnClick{
-    [self initWWWFolder];
-}
--(UIPageControl *)pageControl{
-    if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/self.images.count, SCREEN_HEIGHT * 15/16.0, SCREEN_WIDTH/self.images.count, SCREEN_HEIGHT/16.0)];
-        //设置总页数
-        _pageControl.numberOfPages = self.images.count;
-        //设置分页指示器颜色
-        _pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-        //设置当前指示器颜色
-        _pageControl.currentPageIndicatorTintColor = [UIColor darkGrayColor];
-        _pageControl.backgroundColor = [UIColor clearColor];
-        _pageControl.enabled = NO;
-    }
-    return _pageControl;
-}
-#pragma mark UIScrollViewDelegate
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    self.pageControl.currentPage = (NSInteger)self.mainScrollV.contentOffset.x/SCREEN_WIDTH;
-}
-
 
 -(void)initWWWFolder{
     //此处只在初次登陆的时候显示“初始化”
@@ -326,5 +315,19 @@
     /******************************************************************************************/
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
